@@ -1,0 +1,245 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>MSX Cricket Arena</title>  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">  
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-DyZvZ1n8ZcU8vO7+Zb1T+6s3m9DgD+6P8a7a4f3V1K8pG8e2ZsE5Dq5f1w4m5T5" crossorigin="anonymous">  
+    <style>  
+        body {  
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A more modern font */  
+            background-color: #f0f2f5; /* Lighter background */  
+            display: flex;  
+            justify-content: center;  
+            align-items: center;  
+            min-height: 100vh;  
+            margin: 0;  
+        }  
+
+        .login-container {  
+            display: flex;  
+            background-color: #fff;  
+            border-radius: 10px;  /* Less pronounced rounded corners */  
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Softer shadow */  
+            overflow: hidden;  
+            max-width: 900px;  
+            width: 100%;  
+        }  
+
+        .left-section {  
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Example gradient */  
+            color: #fff; /* White text on the left section */  
+            padding: 40px;  
+            display: flex;  
+            flex-direction: column;  
+            justify-content: center;  
+            align-items: center;  
+            text-align: center;  
+            width: 50%;  
+            position: relative;  
+            border-radius: 0; /* Removed individual radius settings */  
+        }  
+
+        .left-section::before {  
+            content: "";  
+            position: absolute;  
+            top: 0; /* Adjusted to cover the entire section */  
+            left: 0;  
+            width: 100%;  
+            height: 100%;  
+            background: inherit; /* Use the same gradient */  
+            z-index: -1;  
+            filter: blur(20px); /* Add a blur effect */  
+        }  
+
+        .left-section img {  
+            max-width: 80%; /* Slightly smaller image */  
+            border-radius: 8px; /* Simple rounded corners */  
+            margin-bottom: 20px;  
+        }  
+
+        .left-section h3 {  
+            font-size: 2em; /* Larger title */  
+            margin-bottom: 10px;  
+        }  
+
+        .left-section p {  
+            font-size: 1.1em;  
+            opacity: 0.8;  
+        }  
+
+        .right-section {  
+            width: 50%;  
+            padding: 40px;  
+        }  
+
+        .toggle-buttons button {  
+            width: 48%;  
+            border: none;  
+            padding: 12px;  
+            font-weight: 600;  
+            background-color: #e9ecef; /* Lighter background */  
+            color: #495057;  
+            border-radius: 6px;  
+            cursor: pointer;  
+            transition: background-color 0.3s ease;  
+        }  
+
+        .toggle-buttons button:hover {  
+            background-color: #d0d3d8; /* Darker hover effect */  
+        }  
+
+        .toggle-buttons .active {  
+            background-color: #007bff;  
+            color: #fff;  
+        }  
+
+        .social-login button {  
+            width: 100%;  
+            margin-bottom: 10px;  
+            display: flex;  
+            align-items: center;  
+            justify-content: center;  
+            gap: 10px;  /* Reduced gap */  
+            padding: 12px;  
+            border: 1px solid #ced4da;  
+            border-radius: 6px;  
+            background-color: #fff;  
+            color: #495057;  
+            transition: background-color 0.3s ease;  
+        }  
+
+        .social-login button:hover {  
+            background-color: #f8f9fa;  
+        }  
+
+        .social-login img {  
+            width: 24px;  /* Smaller social icons */  
+            height: 24px;  
+        }  
+
+        .password-wrapper {  
+            position: relative;  
+        }  
+
+        .toggle-password {  
+            position: absolute;  
+            right: 10px;  
+            top: 50%;  
+            transform: translateY(-50%);  
+            cursor: pointer;  
+            color: #6c757d;  
+        }  
+
+        .form-label {  
+            font-weight: 500;  
+            color: #343a40;  
+        }  
+
+        .form-control {  
+            border-radius: 6px;  
+            border: 1px solid #ced4da;  
+            padding: 10px;  
+        }  
+
+        .btn-primary {  
+            background-color: #007bff;  
+            border-color: #007bff;  
+            border-radius: 6px;  
+            padding: 12px 20px;  
+            font-weight: 600;  
+            transition: background-color 0.3s ease;  
+        }  
+
+        .btn-primary:hover {  
+            background-color: #0056b3;  
+            border-color: #0056b3;  
+        }  
+
+        .text-center {  
+            text-align: center;  
+        }  
+
+        .mt-3 {  
+            margin-top: 1.5rem;  
+        }  
+
+        .small {  
+            font-size: 0.85em;  
+            color: #007bff;  
+        }  
+
+        .p1 {  
+            color: #6c757d;  
+        }  
+
+    </style>  
+</head>  
+<body>  
+    <div class="login-container">  
+        <div class="left-section">  
+            <img src="Home.png" alt="Practice Image">  
+              
+  
+            <h4> CRICKET STARTS HERE!<br></h4><br>
+            <p>Where Passion Meets the Pitch! <br>
+Every Run. Every Wicket. Every Moment.</p>  <br><br>
+            <p>🚀 Log in & Be Part of the Action!  </p>  
+        </div>  
+        <div class="right-section">  
+        	<h2 style="text-align: center;"><b>CricConnect</b></h2>
+            <div class="toggle-buttons d-flex justify-content-between">  
+                <button class="btn active" id="userBtn">As User</button>  
+                <button class="btn" id="adminBtn">As Admin</button>  
+            </div>  
+            <h3 class="mt-3"><b>Log in</b></h3>  
+            <form action="Login_Form.jsp" method="post">  
+                <input type="hidden" id="userType" name="userType" value="user"> <!-- Hidden input -->  
+                <div class="mb-3">  
+                    <label for="email" class="form-label">Email :</label>  
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Email" required>  
+                </div>  
+                <div class="mb-3 password-wrapper">  
+                    <label for="password" class="form-label" id="pass">Password :</label>  
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>  
+                    <span class="toggle-password" onclick="togglePassword()" style="margin-top:15px ">👁</span>  
+                </div>  
+                <a href="ForgetPass.html" class="small">Forgot password?</a>  
+                <button type="submit" class="btn btn-primary w-100 mt-3">Login</button>  
+            </form>  
+            <p class="text-center mt-3 p1">Don't have an account? <a href="Register.html">Sign up</a></p>  
+        </div>  
+    </div>  
+
+    <script>  
+        const userBtn = document.getElementById('userBtn');  
+        const adminBtn = document.getElementById('adminBtn');  
+        const userTypeInput = document.getElementById('userType');  
+
+        // Set initial state on page load  
+        userBtn.classList.add('active');  // User is default  
+        userTypeInput.value = 'user';  
+
+        userBtn.addEventListener('click', function() {  
+            userTypeInput.value = 'user';  
+            userBtn.classList.add('active');  
+            adminBtn.classList.remove('active');  
+        });  
+
+        adminBtn.addEventListener('click', function() {  
+            userTypeInput.value = 'admin';  
+            adminBtn.classList.add('active');  
+            userBtn.classList.remove('active');  
+        });  
+
+        function togglePassword() {  
+            const passwordField = document.getElementById('password');  
+            passwordField.type = passwordField.type === 'password' ? 'text' : 'password';  
+        }  
+    </script>  
+    <script src="Toast.js"></script>  
+</body>  
+</html>  

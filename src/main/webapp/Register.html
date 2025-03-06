@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Home.png"/>
+    <title>MSX Cricket Arena</title>
+    <link rel="stylesheet" href="Register.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-DyZvZ1n8ZcU8vO7+Zb1T+6s3m9DgD+6P8a7a4f3V1K8pG8e2ZsE5Dq5f1w4m5T5" crossorigin="anonymous">  
+    
+</head>
+<body >
+    <div class="rectangle" >
+        <form action="Register.jsp" method="post">
+            <h1>Register</h1>
+            <h3>Email :</h3>
+            <input type="email" name="email" id="email" placeholder="Enter your Email" required style="margin-left:30px">
+            <h3 id="pass">Password :</h3>
+            <br><br><input type="password" name="password" id="password" placeholder="Enter your password" required style="margin-top: 176px; margin-left:155px; ">
+            <h3 id="cpass">Confirm Password :</h3>
+            <input type="password" name="cpassword" id="cpassword" placeholder="Enter your Confirm Password" required style="margin-top: 255px; margin-left:155px;">
+            <h3 id="name" style="margin-top: 39%;">Name :</h3>
+            <input type="text" name="name" id="name" placeholder="Enter your Name" required style="margin-top: 258px; margin-left:30px">
+            <h3 id="phone" style="margin-top: 49%;">Phone :</h3>
+            <input type="text" name="phone" id="phone" placeholder="Enter your Phone" required style="margin-top: 320px; margin-left:30px">
+            <p style="margin-top: 20px; margin-left:150px;">Have an account? <a href="Login_Form.html" class="animated-link">#Login</a></p>
+            <input style="margin-top:480px; margin-left:250px;" type="submit" value="Register">
+        </form>
+    </div>
+    <script src = "Toast.js"></script>
+</body>
+</html>

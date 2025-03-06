@@ -1,0 +1,113 @@
+@charset "UTF-8";
+.rectangle {
+    width: 650px;
+    height: 500px;
+    position: relative;
+    font-family: 'Times New Roman', Times, serif;
+    border : 1px solid black;
+    background: opacity 0.8;
+    box-shadow: 1px 1px 25px black;
+    justify-content: center;
+    align-items: center;
+}
+body {
+	background: url('assets/Login.jpg') no-repeat center center / cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-left: 20px;
+    text-align: left;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    overflow: hidden;
+    transition: opacity 1s, transform 1s;
+}
+body.fade-out {
+    opacity: 0;
+  }
+.rectangle h1 {
+    position: absolute;
+    top: 2%;
+    margin-left: 230px;
+    font-size: 50px;
+    color: wheat;
+}
+.rectangle h3 {
+    position: absolute;
+    top: 26%;
+    margin-left: 124px;
+    font-size: 18px;
+    color: wheat;
+}
+.rectangle input[type="email"] {
+    position: absolute;
+    top: 37%;
+    left: 28%;
+    width: 190px;
+    height: 30px;
+    background-color: azure;
+    border: 1px solid black;
+    text-align: left;
+    border-radius: 30px;
+    padding-left: 70px;
+}
+.rectangle input[type="password"] {
+    position: absolute;
+    top: 52%;
+    left: 28%;
+    width: 190px;
+    height: 30px;
+    background-color: azure;
+    border: 1px solid black;
+    text-align: left;
+    border-radius: 30px;
+    padding-left: 70px;
+}
+.rectangle input[type="submit"] {
+    position: absolute;
+    top: 71%;
+    left: 40%;
+    width: 100px;
+    height: 30px;
+    background-color: azure;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 30px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+.rectangle input[type="submit"]:hover {
+    background-color: greenyellow;
+}
+.rectangle p {
+    position: absolute;
+    top: 59%;
+    left: 24%;
+    font-size: 18px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+.rectangle .p1 {
+    position: absolute;
+    top: 61%;
+    left: 24%;
+    font-size: 18px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+#pass {
+    margin-left: 125px;
+    margin-top: 100px;
+}
+.rectangle a {
+    color: red;
+}
+.rectangle a:hover {
+    color: greenyellow;
+}
+::placeholder{
+    opacity: 0.5;
+}

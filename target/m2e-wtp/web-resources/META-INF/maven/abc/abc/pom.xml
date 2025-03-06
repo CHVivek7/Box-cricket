@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>abc</groupId>
+    <artifactId>abc</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging> 
+    <name>abc</name>
+
+    <!-- Define dependencies -->
+    <dependencies>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+		<dependency>  
+	        <groupId>org.mindrot</groupId>  
+	        <artifactId>jbcrypt</artifactId>  
+	        <version>0.4</version>  
+    	</dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>2.3.3</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- Build configuration -->
+    <build>
+        <plugins>
+            <!-- Maven Compiler Plugin (to use Java 21) -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>21</release> <!-- Set Java version to 21 -->
+                </configuration>
+            </plugin>
+
+            <!-- Maven WAR Plugin (to create the WAR file) -->
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.3</version>
+                <configuration>
+                    <!-- If needed, you can add specific configurations for WAR plugin -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- Optionally, specify Maven's default repository (if not already defined in settings.xml) -->
+    <repositories>
+        <!-- Add additional repositories if necessary -->
+    </repositories>
+
+    <!-- Optionally, you can define your plugin management, properties, and more here -->
+</project>

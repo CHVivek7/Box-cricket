@@ -1,0 +1,109 @@
+<html>
+
+    <head>
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-DyZvZ1n8ZcU8vO7+Zb1T+6s3m9DgD+6P8a7a4f3V1K8pG8e2ZsE5Dq5f1w4m5T5" crossorigin="anonymous">  
+	    
+        <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/js/boxicons.min.js"></script>
+        <style>
+            /* Import Google font - Poppins */
+
+            @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "Poppins", sans-serif;
+            }
+            body {
+                min-height: 100;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #252526;
+            }
+            .container {
+                justify-items: center;
+                position: relative;
+                width: 500px;
+                height: 250px;
+                padding: 40px;
+                background: #252526;
+                border-radius: 5px;
+                box-shadow: 1PX 0px 10px #26bcff;;
+            }
+            .container header {
+                font-size: 60px;
+                color: #26bcff;
+                margin-top: -20px;
+            }
+            h4 {
+                color: #26bcff;
+                font-size: 20px;
+                margin: 10px 0;
+            }
+            form {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .input-field {
+                align-items: center;
+                justify-content: center;
+            }
+            input[type="email"] {
+                width: 300px;
+                height: 40px;
+                margin: 10px 0;
+                padding: 5px 10px;
+                border: 1px solid white;
+                border-radius: 5px;
+                background: #252526;
+                color: #26bcff;
+                font-size: 16px;
+            }
+            input[type="submit"] {
+                width: 200px;
+                height: 40px;
+                margin-left: 50px ;
+                margin-top: -20px;
+                padding: 5px 10px;
+                border: 1px solid white;
+                border-radius: 5px;
+                background: #26bcff;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+            }
+            
+            .input-field input:focus {
+                box-shadow: 1PX 0px 14px #26bcff;
+            }
+            input[type="submit"]:hover {
+                background: #252526;
+                box-shadow: 1px 0px 13px #26bcff;
+            }
+        </style>
+        <title>MSX Cricket Arena</title>
+    </head>
+    <body>
+        <div class="container">
+        
+            <header>
+                <i class="bx bxs-envelope"></i>
+              </header>
+            <h4>
+                Enter your email to reset password
+            </h4>
+            <form action="ForgetPass.jsp" method="post">
+                <div class="input-field">
+                <input type="email" name="email" required placeholder="Enter your email" >
+                <br><br><input type="submit" value="Submit" ><br><br>
+            </div>
+            </form>
+        </div>
+        <script type="text/javascript" src="Toast.js"></script>
+    </body>
+</html>

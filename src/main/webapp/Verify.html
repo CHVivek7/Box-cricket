@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MSX Cricket Arena</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-DyZvZ1n8ZcU8vO7+Zb1T+6s3m9DgD+6P8a7a4f3V1K8pG8e2ZsE5Dq5f1w4m5T5" crossorigin="anonymous">  
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        
+        
+        align-items: center;
+        justify-content: center;
+        background: #252526;
+      }
+      :where(.container, form, .input-field, header) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .container {
+        background: #252526;
+        padding: 30px 65px;
+        border-radius: 12px;
+        row-gap: 20px;
+        box-shadow: 1px 0px 15px #26bcff;
+      }
+      .container header {
+        height: 65px;
+        width: 65px;
+        background: #26bcff;
+        color: #fff;
+        font-size: 2.5rem;
+        border-radius: 50%;
+      }
+
+      .container h4 {
+        font-size: 1.25rem;
+        color: #26bcff;
+        font-weight: 500;
+      }
+      form .input-field {
+        flex-direction: row;
+        column-gap: 10px;
+      }
+      .input-field input {
+        color: #26bcff;
+        height: 45px;
+        width: 42px;
+        border-radius: 6px;
+        outline: none;
+        font-size: 1.125rem;
+        text-align: center;
+        border: 1px solid #ddd;
+        background-color: #252526;
+      }
+      .input-field input:focus {
+        box-shadow: 1px 0px 20px #26bcff;
+      }
+      .input-field input::-webkit-inner-spin-button,
+      .input-field input::-webkit-outer-spin-button {
+        display: none;
+      }
+      form button {
+        margin-top: 25px;
+        width: 100%;
+        color: #fff;
+        font-size: 1rem;
+        border: 2px solid #26bcff;
+        padding: 9px 0;
+        cursor: pointer;
+        border-radius: 6px;
+        pointer-events: none;
+        background: #252526;
+        transition: all 0.2s ease;
+      }
+      form button.active {
+        pointer-events: auto;
+      }
+      form button:hover {
+        box-shadow: 1px 0px 30px #26bcff;
+        color: #26bcff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <i class="bx bxs-check-shield"></i>
+      </header>
+      <h4>Enter OTP Code</h4>
+      <form action="Verify.jsp" method="post">
+        <div class="input-field">
+          <input type="number" maxlength="1" id="input1" />
+          <input type="number" maxlength="1" id="input2" disabled />
+          <input type="number" maxlength="1" id="input3" disabled />
+          <input type="number" maxlength="1" id="input4" disabled />
+        </div>
+        <input type="hidden" name="otp" id="otp" />
+        <button type="submit">Verify OTP</button>
+      </form>
+    </div>
+
+    <script>
+      const inputs = document.querySelectorAll(".input-field input");
+      const hiddenOtp = document.getElementById("otp");
+      const form = document.querySelector("form");
+      const button = form.querySelector("button");
+      function updateButtonState() {
+    	  const allFilled = Array.from(inputs).every((input) => input.value);
+    	  if (allFilled) {
+    	    button.classList.add("active");
+    	    button.style.boxShadow = "1px 0px 13px #26bcff";
+    	  } else {
+    	    button.classList.remove("active");
+    	    button.style.boxShadow = "none"; 
+    	  }
+    	}
+      // Handle input events for all input fields
+      inputs.forEach((input, index) => {
+        input.addEventListener("input", () => {
+          // Ensure only one digit is entered in each input
+          if (input.value.length > 1) input.value = input.value.slice(0, 1);
+
+          const nextInput = inputs[index + 1];
+
+          // Automatically move focus to the next input when a digit is entered
+          if (input.value && nextInput) {
+            nextInput.disabled = false; // Enable next input
+            nextInput.focus(); // Move to the next input
+          }
+
+          // Enable the submit button when all 4 inputs are filled
+          updateButtonState() // Enable button on final input
+        });
+
+        input.addEventListener("keydown", (e) => {
+          if (e.key === "Backspace" && !input.value) {
+            // If backspace is pressed and the input is empty, move focus to the previous input
+            const prevInput = inputs[index - 1];
+            if (prevInput) {
+              prevInput.disabled = false;
+              prevInput.focus();
+            }
+          }
+        });
+      });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault(); // Prevent default form submission
+        let otpValue = "";
+        inputs.forEach((input) => (otpValue += input.value));
+        if (otpValue.length === 4) {
+          hiddenOtp.value = otpValue; // Set hidden input value
+          form.submit(); // Submit form
+        } else {
+          alert("Please enter a valid 4-digit OTP.");
+        }
+      });
+
+      window.addEventListener("load", () => inputs[0].focus());
+    </script>
+    
+    <script type="text/javascript" src="Toast.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,115 @@
+.rectangle {
+    width: 600px;
+    height: 570px;
+    position: relative;
+    font-family: 'Times New Roman', Times, serif;
+    border : 1px solid black;
+    margin-left:110px;
+    background: opacity 0.8;
+    margin-left : 100px;
+    box-shadow: 0px 10px 25px black;
+}
+body {
+    background: url('assets/Register.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-left: 20px;
+    text-align: left;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    overflow: hidden;
+    transition: opacity 1s, transform 1s ease; 
+    cursor: url('th.jpeg'), auto;
+}
+.rectangle h1 {
+    position: absolute;
+    top: 1%;
+    margin-left: 230px;
+    font-size: 50px;
+    color: white;
+}
+.rectangle h3 {
+    position: absolute;
+    top: 17%;
+    margin-left: 124px;
+    font-size: 18px;
+    color: white;
+}
+.rectangle input[type="email"] {
+    position: absolute;
+    top: 25%;
+    left: 21%;
+    width: 225px;
+    height: 30px;
+    background-color: azure;
+    border: 1px solid black;
+    text-align: left;
+    border-radius: 30px;
+    padding-left: 70px;
+}
+.rectangle input[type="password"] {
+    position: absolute;
+    margin-left:60px;
+    width: 226px;
+    height: 30px;
+    background-color: azure;
+    border: 1px solid black;
+    text-align: left;
+    border-radius: 30px;
+    padding-left: 70px;
+}
+.rectangle input[type="submit"] {
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    background-color: azure;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 17px;
+    font-weight: bold;
+    text-shadow: 0px 0px 0.6px black;
+}
+.rectangle input[type="submit"]:hover {
+    background-color: greenyellow;
+}
+.rectangle p {
+    position: absolute;
+    top: 80%;
+    left: 26%;
+    font-size: 18px;
+    color: white;
+}
+#pass {
+    margin-left: 125px;
+    margin-top: 89px;
+}
+#cpass {
+    margin-left: 125px;
+    margin-top: 163px;
+}
+.rectangle a {
+    color: red;
+}
+.rectangle a:hover {
+    color: blue;
+}
+.rectangle input[type="text"] {
+    position: absolute;
+    top: 17%;
+    left: 21%;
+    width: 225px;
+    height: 30px;
+    background-color: azure;
+    border: 1px solid black;
+    text-align: left;
+    border-radius: 30px;
+    padding-left: 70px;
+}
+::placeholder{
+    opacity: 0.5;
+}
