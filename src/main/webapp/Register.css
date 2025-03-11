@@ -10,7 +10,7 @@
     box-shadow: 0px 10px 25px black;
 }
 body {
-    background: url('assets/Register.jpg') no-repeat center center/cover;
+	color:black;
     display: flex;
     justify-content: center;
     align-items: center;
