@@ -12,7 +12,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>OTP Verification</title>
+    <title>MSX Cricket Arena</title>
 </head>
 <body>
 
@@ -31,7 +31,8 @@
             
             // Load database driver (for MySQL, adjust accordingly)
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "Boxcric", "Boxcric@123");
+
             stmt = conn.createStatement();
 
             // SQL query to check if email exists

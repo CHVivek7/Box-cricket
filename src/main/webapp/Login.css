@@ -78,6 +78,7 @@ body.fade-out {
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
     font-size: 18px;
+    
 }
 .rectangle input[type="submit"]:hover {
     background-color: greenyellow;

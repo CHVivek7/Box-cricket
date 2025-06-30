@@ -9,10 +9,12 @@
     Connection con = null;  
     PreparedStatement ps = null;  
     ResultSet rs = null;  
+	session.setAttribute("loginemail", email);
 
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "");
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "Boxcric", "Boxcric@123");
+
 
         String sql = "SELECT * FROM user_details WHERE email = ? AND role = ?";  
         ps = con.prepareStatement(sql);  

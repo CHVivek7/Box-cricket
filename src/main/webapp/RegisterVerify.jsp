@@ -6,7 +6,7 @@
 <html lang="en">  
 <head>  
     <meta charset="UTF-8">  
-    <title>OTP Verification</title>  
+    <title>MSX Cricket Arena</title>
 </head>  
 <body>  
 <%  
@@ -26,7 +26,7 @@
         if (otp != null && otp.equals(expectedOtp)) {  
             // Using a context variable for database connection information  
             Class.forName("com.mysql.cj.jdbc.Driver");  
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "");  
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "Boxcric", "Boxcric@123");  
             
             // Making use of try-with-resources to automatically manage resources  
             try (PreparedStatement ps = con.prepareStatement("INSERT INTO user_details (email, password, name, phone) VALUES (?, ?, ?, ?)")) {  

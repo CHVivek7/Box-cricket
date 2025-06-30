@@ -2,6 +2,7 @@
 <html lang="en">  
 <head>  
     <meta charset="UTF-8">  
+    <link rel="icon" href="Home.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>MSX Cricket Arena</title>  
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">  
@@ -175,7 +176,28 @@
         .p1 {  
             color: #6c757d;  
         }  
-
+		.toggle-buttons button {
+		    width: 48%;
+		    border: none;
+		    padding: 12px;
+		    font-weight: 600;
+		    background-color: #e9ecef;
+		    color: #495057;
+		    border-radius: 6px;
+		    cursor: pointer;
+		    transition: background-color 0.3s ease;
+		}
+		
+		.toggle-buttons button:not(.active):hover {
+		    background-color: #d0d3d8; /* Apply hover effect only when not active */
+		}
+		
+		.toggle-buttons .active {
+		    background-color: #007bff;
+		    color: #fff;
+		    pointer-events: none; /* Prevent hover effect on active button */
+		}
+		
     </style>  
 </head>  
 <body>  
@@ -186,7 +208,8 @@
   
             <h4> CRICKET STARTS HERE!<br></h4><br>
             <p>Where Passion Meets the Pitch! <br>
-Every Run. Every Wicket. Every Moment.</p>  <br><br>
+Every Run. Every Wicket. Every Moment.
+<br>Step In. Play Hard. Make History.</p>  <br>
             <p>🚀 Log in & Be Part of the Action!  </p>  
         </div>  
         <div class="right-section">  
@@ -207,8 +230,9 @@ Every Run. Every Wicket. Every Moment.</p>  <br><br>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>  
                     <span class="toggle-password" onclick="togglePassword()" style="margin-top:15px ">👁</span>  
                 </div>  
-                <a href="ForgetPass.html" class="small">Forgot password?</a>  
-                <button type="submit" class="btn btn-primary w-100 mt-3">Login</button>  
+                <a href="ForgetPass.html" class="small" style="margin-left:250px">Forgot password?</a>
+                <input type="checkbox" id="check"><a href="Terms_Conditions.html" style="margin-left:10px">Terms & conditions</a></input>  
+                <button type="submit" class="btn btn-primary w-100 mt-3" disabled>Login</button>  
             </form>  
             <p class="text-center mt-3 p1">Don't have an account? <a href="Register.html">Sign up</a></p>  
         </div>  
@@ -220,6 +244,7 @@ Every Run. Every Wicket. Every Moment.</p>  <br><br>
         const userTypeInput = document.getElementById('userType');  
 
         // Set initial state on page load  
+        
         userBtn.classList.add('active');  // User is default  
         userTypeInput.value = 'user';  
 
@@ -234,11 +259,19 @@ Every Run. Every Wicket. Every Moment.</p>  <br><br>
             adminBtn.classList.add('active');  
             userBtn.classList.remove('active');  
         });  
+        const checkbox = document.getElementById('check');
+        const loginButton = document.querySelector('button[type="submit"]');
 
+        checkbox.addEventListener('change', function () {
+            loginButton.disabled = !this.checked;
+        });
         function togglePassword() {  
             const passwordField = document.getElementById('password');  
             passwordField.type = passwordField.type === 'password' ? 'text' : 'password';  
         }  
+        window.onload = function() {
+            alert("This project has been developed by students and does not represent an actual or practical method for slotting the box.");
+        };
     </script>  
     <script src="Toast.js"></script>  
 </body>  

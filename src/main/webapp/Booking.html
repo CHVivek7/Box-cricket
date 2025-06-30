@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="Home.png" style="border-radius:50%;"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSX Cricket Arena</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            width: 80%;
+        }
+        form {
+            margin-left: 100px;
+            background: white;
+            padding: 20px;
+            width: 600px;
+            box-shadow: 0px 0px 10px gray;
+            border-radius: 5px;
+        }
+        input, button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+        #bookingInfo {
+            background: #f4f4f4;
+            padding: 10px;
+            width: 80%;
+            margin-left: 10px;
+            border-radius: 5px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        table {
+            margin-left: 20px;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form action="Booking.jsp" method="POST">
+        <h2 style="text-align:center;">Reserve Your Slot</h2>
+        <input type="date" id="bookingDate" name="date" required>
+        <input type="time" name="start_time" min="06:00" max="22:30" required>
+        <input type="time" name="end_time" min="06:30" max="23:00" required>
+        <button type="submit" style="width:96%">Reserve Slot</button>
+    </form>
+
+    <div id="bookingInfo">
+        <div id="bookingTable"></div>
+    </div>
+</div>
+
+<script>
+    window.onload = function() {
+        let today = new Date().toISOString().split('T')[0];
+        document.getElementById("bookingDate").setAttribute("min", today);     
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get("error");
+        const success = urlParams.get("success");
+
+        if (error) showToast(error, "error");
+        if (success) showToast(success, "success");
+    };
+
+    document.getElementById("bookingDate").addEventListener("change", function() {
+        let selectedDate = this.value;
+        if (selectedDate) {
+            fetch(`Booking_Available.jsp?date=${selectedDate}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("bookingTable").innerHTML = data;
+                })
+                .catch(error => console.error("Error fetching bookings:", error));
+        }
+    });
+
+    
+</script>
+<script src="Toast.js"></script>  
+</body>
+</html>

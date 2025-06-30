@@ -10,28 +10,43 @@
     <packaging>war</packaging> 
     <name>abc</name>
 
-    <!-- Define dependencies -->
+    <!-- Dependencies -->
     <dependencies>
+    	<dependency>
+		    <groupId>org.glassfish</groupId>
+		    <artifactId>javax.json</artifactId>
+		    <version>1.1.4</version>
+		</dependency>
+
+        <!-- JSON Library -->
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
+            <version>1.1.4</version>
+        </dependency>
+
+        <!-- JavaMail API -->
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
             <version>1.6.2</version>
         </dependency>
+
+        <!-- Apache Commons Math -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>  
+            <artifactId>commons-math3</artifactId>  
+            <version>3.6.1</version>  
+        </dependency>  
+
+        <!-- BCrypt for password hashing -->
         <dependency>  
-	    	<groupId>org.apache.commons</groupId>  
-	    	<artifactId>commons-math3</artifactId>  
-    		<version>3.6.1</version> 
-		</dependency>  
-		<dependency>  
-    <groupId>org.apache.commons</groupId>  
-    <artifactId>commons-math3</artifactId>  
-    <version>3.6.1</version> <!-- Or the latest version -->  
-</dependency>  
-		<dependency>  
-	        <groupId>org.mindrot</groupId>  
-	        <artifactId>jbcrypt</artifactId>  
-	        <version>0.4</version>  
-    	</dependency>
+            <groupId>org.mindrot</groupId>  
+            <artifactId>jbcrypt</artifactId>  
+            <version>0.4</version>  
+        </dependency>
+
+        <!-- Servlet API -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -39,12 +54,18 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- JSP API -->
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>javax.servlet.jsp-api</artifactId>
             <version>2.3.3</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.33</version>
+		</dependency>
     </dependencies>
 
     <!-- Build configuration -->
@@ -55,25 +76,18 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <release>21</release> <!-- Set Java version to 21 -->
+                    <release>21</release> <!-- Ensure Java 21 compatibility -->
                 </configuration>
             </plugin>
 
-            <!-- Maven WAR Plugin (to create the WAR file) -->
+            <!-- Maven WAR Plugin -->
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.2.3</version>
+                <version>3.4.0</version>
                 <configuration>
-                    <!-- If needed, you can add specific configurations for WAR plugin -->
+                    <failOnMissingWebXml>false</failOnMissingWebXml> <!-- For Servlet 3.1+ (no need for web.xml) -->
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
-    <!-- Optionally, specify Maven's default repository (if not already defined in settings.xml) -->
-    <repositories>
-        <!-- Add additional repositories if necessary -->
-    </repositories>
-
-    <!-- Optionally, you can define your plugin management, properties, and more here -->
 </project>

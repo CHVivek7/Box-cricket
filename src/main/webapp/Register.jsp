@@ -2,7 +2,7 @@
 <%@ page import="java.sql.*, java.io.*" %>
 <%@ page import="java.util.*" %>
 <%@ page import="javax.mail.*" %>
-<%@ page import="javax.mail.internet.*" %>5
+<%@ page import="javax.mail.internet.*" %>
 <%@ page import="java.io.StringWriter" %>
 <%@ page import="java.io.*" %>
 <%@ page import = "javax.servlet.http.*" %>
@@ -28,7 +28,8 @@
 	if(errorMessage.isEmpty()){
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "Boxcric", "Boxcric@123");
+
 			
 			PreparedStatement ps1 = con.prepareStatement("SELECT * FROM user_details WHERE email =?");
 			ps1.setString(1, email);

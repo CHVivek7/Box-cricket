@@ -5,7 +5,8 @@ const styles = `
 .custom-toast {
     border-radius: 10px;
     font-size: 16px;
-    width: 300px;
+    min-width: 300px;
+    max-width: fit-content;
     background: white;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     position: fixed;
@@ -16,12 +17,10 @@ const styles = `
     display: flex;
     flex-direction: column;
     padding: 15px;
-    font-family: 'Calibri', sans-serif; /* Apply Calibri (Body) font */
-    font-weight: 500;
+    font-family: 'Calibri', sans-serif;
+    font-weight: 400;
     color: black;
-    text-shadow: none; /* Ensure NO text shadow */
-	font-size: 20px;
-	font-weight: 400px;
+    text-shadow: none;
 }
 
 /* Show & Hide */
@@ -40,15 +39,14 @@ const styles = `
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 16px; /* Ensure same size */
-    text-shadow: none; /* Remove any text shadow */
+    font-size: 16px;
+    text-shadow: none;
 }
 
 /* Text inside toast */
 .custom-toast span {
-    overflow: visible;
     flex-grow: 1;
-    text-shadow: none; /* Remove text shadow */
+    text-shadow: none;
 }
 
 /* Close Button */
@@ -70,7 +68,7 @@ const styles = `
 .custom-toast.success {
     background: white;
     border-left: 5px solid #25c561;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow only for success */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .custom-toast.success .content i {
@@ -78,12 +76,11 @@ const styles = `
     font-size: 24px;
 }
 
-/* Error Toast (No Shadow) */
+/* Error Toast */
 .custom-toast.error {
     background: white;
     border-left: 5px solid red;
-    box-shadow: none; /* Remove box shadow */
-	font-size: 24px;
+    box-shadow: none;
 }
 
 .custom-toast.error .content i {
@@ -118,7 +115,7 @@ const styles = `
 }
 `;
 
-// Append styles to the document head
+// Append styles to document head
 const styleSheet = document.createElement("style");
 styleSheet.type = "text/css";
 styleSheet.innerText = styles;
@@ -168,6 +165,7 @@ function showToast(message, type) {
 
 // Map toast types to messages
 const toastMessages = {
+    logoutsuccess: { text: "Logout Success", type: "success" },
     verifysuccess: { text: "OTP sent successfully!", type: "success" },
     otpsuccess: { text: "OTP Verified!", type: "success" },
     updatesuccess: { text: "Password updated", type: "success" },
@@ -180,6 +178,9 @@ const toastMessages = {
     errorphone: { text: "Invalid phone number", type: "error" },
     accountexist: { text: "Account already exists", type: "error" },
     errorpass: { text: "Passwords don't match", type: "error" },
+    slotreserved: { text: "Slot not available", type: "error" },
+    profileupdate: { text: "Profile updated successfully!", type: "success" },
+	requestsuccess: { text: "Join request sent successfully!", type: "success" } 
 };
 
 // Check URL parameters for toast type

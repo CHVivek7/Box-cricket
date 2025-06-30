@@ -10,7 +10,7 @@
 
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "");
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "Boxcric", "Boxcric@123");
 
 
         if (newPassword.equals(confirmPassword)) {

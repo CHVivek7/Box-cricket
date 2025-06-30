@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+  	<link rel="icon" href="Home.png"/>
+    
+    <title>MSX Cricket Arena</title>
+    <style>
+     	body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background: #1e1e1e;
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            width: 320px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #b0b0b0;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            font-size: 14px;
+            background: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .error {
+            color: #ff4d4d;
+            font-size: 12px;
+            text-align: left;
+            margin: 3px 0 0 5px;
+            display: none;
+        }
+
+        .error-input {
+            border-color: #ff4d4d;
+        }
+
+        input[type="submit"] {
+        	width:90%;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Update Profile</h2>
+        <form action="User_Profile_Update.jsp" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required >
+
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required  >
+
+            <label for="pass">New Password:</label>
+            <input type="password" id="pass" name="pass" placeholder="Enter new password" required  >
+
+            <label for="cpass">Confirm Password:</label>
+            <input type="password" id="cpass" name="cpass" placeholder="Confirm password" required onchange="validateConfirmPassword()" >
+            
+
+            <input type="submit" id="updateBtn" value="Update" >
+        </form>
+    </div>
+
+	<script src="Toast.js"></script>
+</body>
+</html>
