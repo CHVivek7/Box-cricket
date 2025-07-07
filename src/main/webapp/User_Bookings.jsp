@@ -1,4 +1,5 @@
 <%@ page import="java.sql.*,  java.text.SimpleDateFormat" %>
+<%@ page import="io.github.cdimascio.dotenv.Dotenv" %>
 <%
     String userEmail = (String)session.getAttribute("loginemail") ;
     if (userEmail == null) {
@@ -11,9 +12,15 @@
     ResultSet rs = null;
     
     try {
-    	Class.forName("com.mysql.cj.jdbc.Driver");
-    	conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "Boxcric", "Boxcric@123");
-        
+        Dotenv dotenv = Dotenv.configure().load();
+
+        String url = dotenv.get("DB_URL"); // e.g., jdbc:mysql://localhost:3306/users
+        String user = dotenv.get("DB_USER");
+        String pass = dotenv.get("DB_PASSWORD");
+
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        conn = DriverManager.getConnection(url, user, pass);
         String query = "SELECT booking_id, booking_date, start_time, end_time, price, reserve_date, email FROM booking_details WHERE email = ?";
         pstmt = conn.prepareStatement(query);
         pstmt.setString(1, userEmail);

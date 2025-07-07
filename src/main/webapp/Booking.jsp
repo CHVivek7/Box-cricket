@@ -1,4 +1,6 @@
-<%@ page import="java.sql.*, java.text.SimpleDateFormat, java.util.Date, java.util.Random, java.util.Calendar" %>  
+<%@ page import="java.sql.*, java.text.SimpleDateFormat, java.util.Date, java.util.Random, java.util.Calendar" %>
+<%@ page import="io.github.cdimascio.dotenv.Dotenv" %>
+
 <%  
     String email = (String) session.getAttribute("loginemail"); 
     String date = request.getParameter("date");  
@@ -10,10 +12,16 @@
     ResultSet rsCheck = null, rsUser = null;  
     boolean isAvailable = true;  
 
-    try {  
-        Class.forName("com.mysql.cj.jdbc.Driver");  
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "Boxcric", "Boxcric@123");
+    try {
+        Dotenv dotenv = Dotenv.configure().load();
 
+        String url = dotenv.get("DB_URL"); // e.g., jdbc:mysql://localhost:3306/users
+        String user = dotenv.get("DB_USER");
+        String pass = dotenv.get("DB_PASSWORD");
+
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        con = DriverManager.getConnection(url, user, pass);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
         Date selectedDate = sdf.parse(date);  
         Date today = new Date();  

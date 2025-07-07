@@ -6,7 +6,9 @@
 <%@ page import="java.io.StringWriter" %>
 <%@ page import="java.io.*" %>
 <%@ page import = "javax.servlet.http.*" %>
-<%@ page import="java.sql.*" %> <!-- Import for SQL -->
+<%@ page import="java.sql.*" %>
+<%@ page import="io.github.cdimascio.dotenv.Dotenv" %>
+<!-- Import for SQL -->
 
 <%
 	response.setContentType("text/html");
@@ -27,9 +29,15 @@
 	
 	if(errorMessage.isEmpty()){
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "Boxcric", "Boxcric@123");
+			Dotenv dotenv = Dotenv.configure().load();
 
+			String url = dotenv.get("DB_URL"); // e.g., jdbc:mysql://localhost:3306/users
+			String user = dotenv.get("DB_USER");
+			String pass = dotenv.get("DB_PASSWORD");
+
+
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection(url, user, pass);
 			
 			PreparedStatement ps1 = con.prepareStatement("SELECT * FROM user_details WHERE email =?");
 			ps1.setString(1, email);

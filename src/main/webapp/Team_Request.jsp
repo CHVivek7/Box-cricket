@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*, java.text.SimpleDateFormat" %>
+<%@ page import="io.github.cdimascio.dotenv.Dotenv" %>
 
 <html>
 <head>
@@ -90,9 +91,15 @@
             ResultSet rs = null;
 
             try {
-                Class.forName("com.mysql.jdbc.Driver");
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "Boxcric", "Boxcric@123");
+                Dotenv dotenv = Dotenv.configure().load();
 
+                String url = dotenv.get("DB_URL"); // e.g., jdbc:mysql://localhost:3306/users
+                String user = dotenv.get("DB_USER");
+                String pass = dotenv.get("DB_PASSWORD");
+
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                con = DriverManager.getConnection(url, user, pass);
                 String query = "SELECT jt.booking_id, jt.requester_email, jt.request_status, "+
                 	       "bd.start_time, bd.end_time, bd.reserve_date "+
                 	       "FROM join_teams jt "+

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.sql.*, java.util.Properties, javax.mail.*, javax.mail.internet.*" %>
 <%@ page import="java.sql.*, java.text.SimpleDateFormat, java.util.Calendar, java.util.TimeZone, java.util.Date" %>
+<%@ page import="io.github.cdimascio.dotenv.Dotenv" %>
 
 
 <%
@@ -21,9 +22,15 @@
             return;
         }
 
-        Class.forName("com.mysql.jdbc.Driver");
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "Boxcric", "Boxcric@123");
+        Dotenv dotenv = Dotenv.configure().load();
 
+        String url = dotenv.get("DB_URL"); // e.g., jdbc:mysql://localhost:3306/users
+        String user = dotenv.get("DB_USER");
+        String pass = dotenv.get("DB_PASSWORD");
+
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        con = DriverManager.getConnection(url, user, pass);
 
         // Insert request into join_teams table
         String insertQuery = "INSERT INTO join_teams (booking_id, requester_email, accepter_email, start_time, end_time, reserve_date, request_status) VALUES (?, ?, ?, ?, ?, ?, 'Pending')";
