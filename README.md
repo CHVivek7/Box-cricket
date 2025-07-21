@@ -1,6 +1,6 @@
 # Box Cricket
 
-Box Cricket is a project designed to manage and track box cricket games, scores, teams, and player statistics. This repository provides a platform for organizing box cricket tournaments, recording match results, and analyzing player performance.
+Box Cricket is a comprehensive Java web application designed to streamline the organization and management of box cricket tournaments. Running on Apache Tomcat, this platform empowers users to oversee teams, players, matches, payments, and more, providing a seamless experience for both administrators and participants.
 
 ## Table of Contents
 
@@ -15,11 +15,15 @@ Box Cricket is a project designed to manage and track box cricket games, scores,
 
 ## Features
 
-- Create and manage teams and players
-- Schedule matches and record scores
-- Track player statistics and team performance
-- Generate leaderboards for tournaments
-- User-friendly interface for managing tournaments
+- **Create and Manage Teams and Players:** Effortlessly add, edit, and organize teams and players within the tournament.
+- **Schedule Matches and Record Scores:** Plan fixtures, automate scheduling, and enter live match results for real-time tracking.
+- **Payment Integration:** Securely collect participation or registration fees using integrated Razorpay payment gateway.
+- **Admin Modules:** Robust admin panels for managing users, overseeing tournament progress, and customizing event settings.
+- **Share Tournament Box:** Instantly share tournament details, team stats, or match results with participants or on social media.
+- **Comprehensive Statistics:** Generate player leaderboards, team rankings, and insightful match analytics.
+- **User Authentication and Roles:** Secure login for players, admins, and organizers with role-based access control.
+- **Responsive Design:** Intuitive, mobile-friendly user interface for easy access on any device.
+- **Notifications and Updates:** Automated alerts for upcoming matches, score updates, and important announcements.
 
 ## Installation
 
@@ -29,69 +33,72 @@ Box Cricket is a project designed to manage and track box cricket games, scores,
    cd Box-cricket
    ```
 
-2. **Install required dependencies:**
-   > _**Note:** Add specific installation steps for your stack (Node, Python, etc.) below. Update as appropriate for your project._
+2. **Configure Database:**
+   - Install MySQL and create a new database (e.g., `box_cricket`).
+   - Import the provided SQL schema from `/db/schema.sql` or similar location.
 
+3. **Set Up Environment Variables:**
+   - Edit `src/main/resources/db.properties` (or your config file) with your MySQL credentials.
+   - Add Razorpay API keys and other sensitive configurations as environment variables or in a `.env` file.
+
+4. **Build the Project:**
    ```bash
-   # For Node.js projects
-   npm install
-
-   # For Python projects
-   pip install -r requirements.txt
+   # If using Maven
+   mvn clean package
    ```
 
-3. **Set up environment variables:**
-   - Copy `.env.example` to `.env` and update configurations as needed.
+5. **Deploy to Tomcat:**
+   - Copy the generated `.war` file from `target/` to your Apache Tomcat `webapps/` directory.
+   - Start/restart the Tomcat server.
 
-4. **Run the application:**
-   ```bash
-   # For Node.js
-   npm start
-
-   # For Python
-   python app.py
-   ```
+6. **Access the Application:**
+   - Open your browser and visit [http://localhost:8080/Box-cricket](http://localhost:8080/Box-cricket) (adjust path as needed).
 
 ## Usage
 
-- Access the application locally at [http://localhost:3000](http://localhost:3000) _(or the relevant port)_.
-- Register teams and players.
-- Schedule matches and enter scores.
-- View statistics, leaderboards, and match histories.
+- Register as an admin or player.
+- Set up teams and players from the admin dashboard.
+- Schedule matches and manage fixtures through the calendar interface.
+- Record match scores and view live updates.
+- Handle payments securely via Razorpay integration.
+- Share tournament progress and results easily with participants.
 
 ## Project Structure
 
 ```
 Box-cricket/
 │
-├── src/                # Source code files
-├── public/             # Static assets
-├── tests/              # Test files
-├── .env.example        # Example environment variables
-├── package.json        # Node.js project file (if applicable)
-├── requirements.txt    # Python dependencies (if applicable)
-└── README.md           # Project documentation
+├── src/                   # Java source code (Servlets, Controllers, Models)
+├── WebContent/            # JSP files, HTML, CSS, JS, static assets
+├── db/                    # Database schema and sample data
+├── lib/                   # External libraries (JARs)
+├── .env.example           # Example environment variables (if used)
+├── pom.xml                # Maven project file
+├── README.md              # Project documentation
+└── ...
 ```
-
-> _Adjust the above structure based on your actual directory organization and stack._
 
 ## Technologies Used
 
-- [List the main programming languages, frameworks, and libraries]
-  - Example: Node.js, Express, MongoDB, React
-  - Example: Python, Flask/Django, SQLite/PostgreSQL
+- **Java** (JSP, Servlets)
+- **HTML**, **CSS**, **JavaScript**
+- **MySQL** (Database)
+- **Razorpay** (Payment Integration)
+- **Apache Tomcat Server**
+- **Bootstrap** (for responsive UI, if used)
+- **JDBC** (for database connectivity)
 
 ## Contributing
 
 Contributions are welcome! Please follow these steps:
 
-1. Fork the repository
+1. Fork the repository.
 2. Create a new branch: `git checkout -b feature/YourFeature`
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin feature/YourFeature`
-5. Open a pull request
+5. Open a pull request.
 
-Please read the [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## License
 
@@ -101,4 +108,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 Created and maintained by [CHVivek7](https://github.com/CHVivek7).
 
-For questions or suggestions, open an issue or contact via GitHub.
+For questions or suggestions, please open an issue or contact via GitHub.
